@@ -27,6 +27,16 @@ public class TestDice {
 
   @Test
   public void TestDice(){
+    //Rolls dice 50,000 times
+    //Ensures dice don't go below 1 or above diceSize
 
+    Dice dice = new Dice();
+    int max = dice.getDiceSize();
+
+    for(int i = 0; i < 50000; ++i){
+      DiceRoll roll = dice.rollDice();
+      assertFalse(roll.getRoll()[0] > max || roll.getRoll()[0] <= 0);
+      assertFalse(roll.getRoll()[1] > max || roll.getRoll()[1] <= 0);
+    }
   }
 }
